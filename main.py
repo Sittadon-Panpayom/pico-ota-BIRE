@@ -83,7 +83,7 @@ while True:
     print("Starting the main loop...")
     # Blink LED and check versions periodically
     for _ in range(CHECK_INTERVAL):
-        blink(1, delay = 0.9)
+        blink(1, delay = 2)
         time.sleep(0.1)
     local = get_local_version()
     remote = get_remote_version()

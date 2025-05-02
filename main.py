@@ -6,14 +6,14 @@ import json
 import time
 
 # === CONFIG ===
-RAW_VERSION_URL = "https://github.com/Fayeinstainy/BIR25_TEAM_E/blob/pico-ota/version.json"
-RAW_MAIN_URL    = "https://github.com/Fayeinstainy/BIR25_TEAM_E/edit/pico-ota/main.py"
-CHECK_INTERVAL = 60  # seconds
+RAW_VERSION_URL = "https://github.com/Huw311/pico_ota/blob/main/version.json"
+RAW_MAIN_URL    = "https://github.com/Huw311/pico_ota/blob/main/main.py"
+CHECK_INTERVAL = 20  # seconds
 
 # === Blink Setup ===
 led = machine.Pin("LED", machine.Pin.OUT)
 
-def blink(n=1, delay=0.1):
+def blink(n=1, delay=0.9):
     for _ in range(n):
         led.on()
         time.sleep(delay)

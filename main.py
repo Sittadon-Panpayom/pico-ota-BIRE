@@ -13,7 +13,7 @@ CHECK_INTERVAL = 10  # seconds
 # === Blink Setup ===
 led = machine.Pin("LED", machine.Pin.OUT)
 
-def blink(n=1, delay=2):
+def blink(n=1, delay=10):
     print(f"Blinking {n} times with {delay}s delay.")
     for _ in range(n):
         led.on()
@@ -83,7 +83,7 @@ while True:
     print("Starting the main loop...")
     # Blink LED and check versions periodically
     for _ in range(CHECK_INTERVAL):
-        blink(1, delay = 1)
+        blink(1, delay = 10)
         time.sleep(0.9)
     local = get_local_version()
     remote = get_remote_version()

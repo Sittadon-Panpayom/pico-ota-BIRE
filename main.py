@@ -84,16 +84,16 @@ def update_code():
 while True:
     print("Starting the main loop...")    
     rgb.color = (0, 255,0 ) #blue
-    time.sleep(5)
+    time.sleep(2)
     rgb.color = (0,0,0) 
-    time.sleep(5)
+    time.sleep(1)
     local = get_local_version()
     remote = get_remote_version()
     print(f"Local version: {local}, Remote version: {remote}")
     if local != remote:
         print("Version mismatch detected, updating code...")
         rgb.cycle() #cycle through colour
-        time.sleep(5)
+        time.sleep(3)
         update_code()
      
     else:

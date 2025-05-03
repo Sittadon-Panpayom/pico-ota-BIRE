@@ -4,10 +4,12 @@ import machine
 import urequests as requests
 import json
 import time
+from picozero import RGBLED
+rgb = RGBLED(red = 16, green = 17, blue = 18,active_high=False) 
 
 # === CONFIG ===
 RAW_VERSION_URL = "https://raw.githubusercontent.com/Huw311/pico_ota/refs/heads/main/version.json"
-RAW_MAIN_URL    = "https://raw.githubusercontent.com/Huw311/pico_ota/refs/heads/main/main.py"
+RAW_MAIN_URL    = "https://raw.githubusercontent.com/Sittadon-Panpayom/pico-ota-BIRE/main/main.py"
 CHECK_INTERVAL = 10  # seconds
 
 # === Blink Setup ===
@@ -80,17 +82,18 @@ def update_code():
 
 # === Main Loop ===
 while True:
-    print("Starting the main loop...")
-    # Blink LED and check versions periodically
-    for _ in range(CHECK_INTERVAL):
-        blink(1, delay = 10)
-        time.sleep(0.9)
+    print("Starting the main loop...")    
+    rgb.color = (0, 255,0 ) #blue
+    time.sleep(5)
+    rgb.color = (0,0,0) 
     local = get_local_version()
     remote = get_remote_version()
     print(f"Local version: {local}, Remote version: {remote}")
     if local != remote:
         print("Version mismatch detected, updating code...")
         update_code()
+        rgb.cycle() #cycle through colour
+        time.sleep(5)
     else:
         print("Versions are the same, no update required.")
-
+        rgb.(255,0,0) #red

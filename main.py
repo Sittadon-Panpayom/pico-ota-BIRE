@@ -6,7 +6,8 @@ import json
 import time
 from picozero import RGBLED
 rgb = RGBLED(red = 16, green = 17, blue = 18,active_high=False) 
-
+SSID = 'Pixel_1533'
+PASSWORD = 'xbhi57a4ssyjh7t'
 # === CONFIG ===
 RAW_VERSION_URL = "https://raw.githubusercontent.com/Sittadon-Panpayom/pico-ota-BIRE/refs/heads/main/version.json"
 RAW_MAIN_URL    = "https://raw.githubusercontent.com/Sittadon-Panpayom/pico-ota-BIRE/refs/heads/main/main.py"
@@ -14,6 +15,20 @@ CHECK_INTERVAL = 10  # seconds
 
 # === Blink Setup ===
 led = machine.Pin("LED", machine.Pin.OUT)
+def connect():
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
+    if not wlan.isconnected():
+        print("Connecting to Wi-Fi...")
+        wlan.connect(SSID, PASSWORD)
+        timeout = 10
+        while not wlan.isconnected() and timeout > 0:
+            time.sleep(1)
+            timeout -= 1
+    if wlan.isconnected():
+        print("Connected to Wi-Fi:", wlan.ifconfig())
+    else:
+        print("Failed to connect to Wi-Fi.")
 
 def blink(n=1, delay=10):
     print(f"Blinking {n} times with {delay}s delay.")
@@ -87,6 +102,7 @@ while True:
     time.sleep(2)
     rgb.color = (0,0,0) 
     time.sleep(1)
+    connect()
     local = get_local_version()
     remote = get_remote_version()
     print(f"Local version: {local}, Remote version: {remote}")

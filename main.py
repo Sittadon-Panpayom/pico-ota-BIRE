@@ -4,6 +4,7 @@ import machine
 import urequests as requests
 import json
 import time
+import network
 from picozero import RGBLED
 rgb = RGBLED(red = 16, green = 17, blue = 18,active_high=False) 
 SSID = 'Pixel_1533'

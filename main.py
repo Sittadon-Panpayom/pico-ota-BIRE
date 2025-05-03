@@ -8,7 +8,7 @@ from picozero import RGBLED
 rgb = RGBLED(red = 16, green = 17, blue = 18,active_high=False) 
 
 # === CONFIG ===
-RAW_VERSION_URL = "https://raw.githubusercontent.com/Huw311/pico_ota/refs/heads/main/version.json"
+RAW_VERSION_URL = "https://raw.githubusercontent.com/Sittadon-Panpayom/pico-ota-BIRE/refs/heads/main/version.json"
 RAW_MAIN_URL    = "https://raw.githubusercontent.com/Sittadon-Panpayom/pico-ota-BIRE/main/main.py"
 CHECK_INTERVAL = 10  # seconds
 

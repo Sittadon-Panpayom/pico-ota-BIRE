@@ -96,4 +96,4 @@ while True:
         time.sleep(5)
     else:
         print("Versions are the same, no update required.")
-        rgb.(255,0,0) #red
+        rgb.color = (255,0,0) #red

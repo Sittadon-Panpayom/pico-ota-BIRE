@@ -86,14 +86,18 @@ while True:
     rgb.color = (0, 255,0 ) #blue
     time.sleep(5)
     rgb.color = (0,0,0) 
+    time.sleep(5)
     local = get_local_version()
     remote = get_remote_version()
     print(f"Local version: {local}, Remote version: {remote}")
     if local != remote:
         print("Version mismatch detected, updating code...")
-        update_code()
         rgb.cycle() #cycle through colour
         time.sleep(5)
+        update_code()
+     
     else:
         print("Versions are the same, no update required.")
         rgb.color = (255,0,0) #red
+        time.sleep(2)
+

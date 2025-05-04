@@ -103,7 +103,6 @@ while True:
     time.sleep(2)
     rgb.color = (0,0,0) 
     time.sleep(1)
-    connect()
     local = get_local_version()
     remote = get_remote_version()
     print(f"Local version: {local}, Remote version: {remote}")
